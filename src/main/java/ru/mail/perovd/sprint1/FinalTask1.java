@@ -9,18 +9,17 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
-
-//60128628
+//60349974
 public class FinalTask1 {
 
     public static void main(String[] args) throws IOException {
-        long[] numbers;
+        int[] numbers;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int numLines = Integer.parseInt(reader.readLine());
-            numbers = new long[numLines];
+            numbers = new int[numLines];
             StringTokenizer tokenizer = new StringTokenizer(reader.readLine());
             for (int i = 0; i < numLines; ++i) {
-                numbers[i] = Long.parseLong(tokenizer.nextToken());
+                numbers[i] = Integer.parseInt(tokenizer.nextToken());
             }
         }
         String collect = Arrays.stream(dist(numbers)).boxed()
@@ -29,7 +28,7 @@ public class FinalTask1 {
         System.out.println(collect);
     }
 
-    static int[] dist(long[] numbers) {
+    static int[] dist(int[] numbers) {
         int[] result = new int[numbers.length];
         List<Integer> zeroPosition = new ArrayList<>();
         for (int i = 0; i < numbers.length; i++) {
