@@ -4,6 +4,8 @@ package ru.mail.perovd.sprint1;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigInteger;
+
 public class FinalTask2Test {
     @Test
     public void test1() {
@@ -14,5 +16,11 @@ public class FinalTask2Test {
     public void test2() {
         int[] input = new int[]{0,10,0,0,0,0,0,0,0,6};
         Assert.assertEquals(1, FinalTask2.score(input, 4));
+    }
+
+    @Test
+    public void  foo(){
+        int x = Math.floorDiv(4, 2);
+        System.out.println(x);
     }
 }

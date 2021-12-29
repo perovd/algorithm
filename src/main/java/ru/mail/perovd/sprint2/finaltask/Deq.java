@@ -1,5 +1,3 @@
-package ru.mail.perovd.sprint2.finaltask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +6,7 @@ import java.util.StringTokenizer;
 
 
 /**
+ * ID сборки 63248206
  * Я реализовал дек на основе массива.
  * -- ПРИНЦИП РАБОТЫ --
  * <p>
