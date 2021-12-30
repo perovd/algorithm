@@ -1,3 +1,4 @@
+package ru.mail.perovd.sprint2.finaltask;
 
 import java.io.BufferedReader;
 import java.io.IOException;
