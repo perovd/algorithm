@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,7 +7,7 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 
 /**
- * ID сборки 63248173
+ * https://contest.yandex.ru/contest/22781/run-report/63253850/
  */
 public class Calc {
 
@@ -18,7 +19,7 @@ public class Calc {
         operations.put("+", (BinaryOperator<Integer>) (a, b) -> a + b);
         operations.put("-", (BinaryOperator<Integer>) (a, b) -> a - b);
         operations.put("*", (BinaryOperator<Integer>) (a, b) -> a * b);
-        operations.put("/", (BinaryOperator<Integer>) (a, b) -> Math.floorDiv(a, b));
+        operations.put("/", (BinaryOperator<Integer>) (a, b) -> b == 0 ? 0 : Math.floorDiv(a, b));
     }
 
     public static void main(String[] args) throws IOException {
@@ -48,6 +49,6 @@ public class Calc {
     }
 
     private boolean isOperand(String x) {
-        return !(x.equals("+") || x.equals("-") || x.equals("*") || x.equals("/"));
+        return !operations.containsKey(x);
     }
 }

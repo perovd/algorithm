@@ -1,12 +1,14 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.StringTokenizer;
 
 
 /**
- * ID сборки 63248206
+ * https://contest.yandex.ru/contest/22781/run-report/63253918/
+ *
  * Я реализовал дек на основе массива.
  * -- ПРИНЦИП РАБОТЫ --
  * <p>
@@ -33,6 +35,7 @@ import java.util.StringTokenizer;
  */
 public class Deq {
 
+    private static final String ERROR = "error";
     private final Integer[] array;
     private int head = 0;
     private int tail = 0;
@@ -50,8 +53,7 @@ public class Deq {
      */
     private void pushBack(int value) {
         if (size == maxSize) {
-            System.out.println("error");
-            return;
+            throw new IllegalStateException(ERROR);
         }
         array[tail] = value;
         tail = (tail + 1) % maxSize;
@@ -63,8 +65,7 @@ public class Deq {
      */
     private void pushFront(int value) {
         if (size == maxSize) {
-            System.out.println("error");
-            return;
+            throw new IllegalStateException(ERROR);
         }
         head = (head - 1 + maxSize) % maxSize;
         array[head] = value;
@@ -74,31 +75,29 @@ public class Deq {
     /**
      * вывести первый элемент дека и удалить его. Если дек был пуст, то вывести «error».
      */
-    private void popFront() {
+    private int popFront() {
         if (size == 0) {
-            System.out.println("error");
-            return;
+            throw new IllegalStateException(ERROR);
         }
 
         Integer x = array[head];
         head = (head + 1) % maxSize;
         size -= 1;
-        System.out.println(x);
+        return x;
     }
 
     /**
      * вывести последний элемент дека и удалить его. Если дек был пуст, то вывести «error».
      */
-    private void popBack() {
+    private int popBack() {
         if (size == 0) {
-            System.out.println("error");
-            return;
+            throw new IllegalStateException(ERROR);
         }
 
         tail = (tail - 1 + maxSize) % maxSize;
         Integer x = array[tail];
         size -= 1;
-        System.out.println(x);
+        return x;
     }
 
 
@@ -111,16 +110,20 @@ public class Deq {
             for (int i = 0; i < commandCount; ++i) {
                 StringTokenizer tokenizer = new StringTokenizer(reader.readLine());
                 String cmd = tokenizer.nextToken();
-                if ("push_front".equals(cmd)) {
-                    deq.pushFront(Integer.parseInt(tokenizer.nextToken()));
-                } else if ("pop_front".equals(cmd)) {
-                    deq.popFront();
-                } else if ("pop_back".equals(cmd)) {
-                    deq.popBack();
-                } else if ("push_back".equals(cmd)) {
-                    deq.pushBack(Integer.parseInt(tokenizer.nextToken()));
-                } else {
-                    throw new UnsupportedEncodingException("Unsupported command " + cmd);
+                try {
+                    if ("push_front".equals(cmd)) {
+                        deq.pushFront(Integer.parseInt(tokenizer.nextToken()));
+                    } else if ("pop_front".equals(cmd)) {
+                        System.out.println(deq.popFront());
+                    } else if ("pop_back".equals(cmd)) {
+                        System.out.println(deq.popBack());
+                    } else if ("push_back".equals(cmd)) {
+                        deq.pushBack(Integer.parseInt(tokenizer.nextToken()));
+                    } else {
+                        throw new IllegalArgumentException("Unsupported command " + cmd);
+                    }
+                } catch (IllegalStateException e){
+                    System.out.println(e.getMessage());
                 }
             }
         }

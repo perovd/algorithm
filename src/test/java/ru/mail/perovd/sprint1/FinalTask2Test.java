@@ -20,7 +20,7 @@ public class FinalTask2Test {
 
     @Test
     public void  foo(){
-        int x = Math.floorDiv(4, 2);
+        int x = Math.floorDiv(4, 0);
         System.out.println(x);
     }
 }
