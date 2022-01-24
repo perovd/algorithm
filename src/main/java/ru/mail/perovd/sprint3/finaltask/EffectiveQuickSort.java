@@ -1,4 +1,4 @@
-package ru.mail.perovd.sprint3.finaltask;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -111,13 +111,13 @@ public class EffectiveQuickSort {
 
         @Override
         public int compareTo(Participant o) {
-            int compare = this.done - o.done;
+            int compare = Integer.compare(this.done, o.done);
             if (compare != 0) {
                 return compare;
             }
-            compare = this.fine - o.fine;
+            compare = -Integer.compare(this.fine, o.fine);
             if (compare != 0) {
-                return compare * -1;
+                return compare;
             }
             return this.login.compareTo(o.login) * -1;
         }

@@ -1,6 +1,5 @@
-package ru.mail.perovd.sprint3.finaltask;
 /**
- * ID 64126590 https://contest.yandex.ru/contest/23815/run-report/64126590/
+ * ID 64482034 https://contest.yandex.ru/contest/23815/run-report/64482034/
  *
  * Идея заключается в том, чтобы найти опорную точку,
  * разделить массив на два подмассива и выполнить двоичный поиск в каждой половине.
