@@ -107,5 +107,18 @@ public class SearchSystem {
             }
             return Integer.compare(k, o.k);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Pair pair = (Pair) o;
+            return k == pair.k && v == pair.v;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(k, v);
+        }
     }
 }
